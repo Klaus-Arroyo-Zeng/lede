@@ -48,9 +48,7 @@ jobs:
           cd package
           mkdir openwrt-packages
           cd openwrt-packages
-          git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
-          git clone https://github.com/Ameykyl/luci-app-koolproxyR
-          git clone https://github.com/rosywrt/luci-theme-rosy
+          git clone https://github.com/rosywrt/luci-theme-rosy.git
           git clone https://github.com/maxlicheng/luci-app-ssr-plus.git
 
           # sudo mkdir -p -m 777 /mnt/openwrt/bin /mnt/openwrt/build_dir/host /mnt/openwrt/build_dir/hostpkg /mnt/openwrt/dl /mnt/openwrt/feeds /mnt/openwrt/staging_dir
