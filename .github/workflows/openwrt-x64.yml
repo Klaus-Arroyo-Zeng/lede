@@ -52,6 +52,7 @@ jobs:
           # git clone https://github.com/maxlicheng/luci-app-ssr-plus.git
           git clone https://github.com/jerrykuku/lua-maxminddb.git  #git lua-maxminddb 依赖
           git clone https://github.com/jerrykuku/luci-app-vssr.git
+          git clone https://github.com/kenzok8/small.git #依赖仓库
 
           # sudo mkdir -p -m 777 /mnt/openwrt/bin /mnt/openwrt/build_dir/host /mnt/openwrt/build_dir/hostpkg /mnt/openwrt/dl /mnt/openwrt/feeds /mnt/openwrt/staging_dir
           # ln -s /mnt/openwrt/bin ./bin
@@ -66,7 +67,11 @@ jobs:
       - name: Update feeds
         run: |
           ./scripts/feeds update -a
+          rm -rf tmp && ./scripts/feeds install -f -p luci-app-vssr shadowsocksr-libev
           ./scripts/feeds install -a
+          
+
+
 
       - name: Generate configuration file
         run: |
