@@ -156,8 +156,8 @@ jobs:
           # 常用LuCI插件选择:
           cat >> .config <<EOF
           CONFIG_PACKAGE_luci-app-vssr=y
-          # CONFIG_PACKAGE_luci-app-zerotier=y
-          # CONFIG_PACKAGE_luci-app-ipsec-vpnd=y
+          CONFIG_PACKAGE_luci-app-zerotier=m
+          CONFIG_PACKAGE_luci-app-ipsec-vpnd=m
           # CONFIG_PACKAGE_luci-app-adbyby-plus=y
           # CONFIG_PACKAGE_luci-app-aria2=y
           # CONFIG_PACKAGE_luci-app-baidupcs-web=y
@@ -167,7 +167,7 @@ jobs:
           # CONFIG_PACKAGE_luci-app-minidlna=y
           # CONFIG_PACKAGE_luci-app-openvpn=y
           # CONFIG_PACKAGE_luci-app-openvpn-server=y
-          # CONFIG_PACKAGE_luci-app-qbittorrent=y
+          CONFIG_PACKAGE_luci-app-qbittorrent=m
           # CONFIG_PACKAGE_luci-app--ssr-plus=y
           # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Kcptun=y
           # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=y
