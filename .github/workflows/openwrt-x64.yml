@@ -43,30 +43,20 @@ jobs:
           sudo -E apt-get -y autoremove --purge
           sudo -E apt-get clean
           
-      - name: 自定义插件主题。
+      - name: 自定义插件|主题。
         run: |
           cd package
           mkdir openwrt-packages
           cd openwrt-packages
-          git clone https://github.com/fw876/helloworld.git
+          # git clone https://github.com/fw876/helloworld.git
           git clone https://github.com/jerrykuku/lua-maxminddb.git  #git lua-maxminddb 依赖
           git clone https://github.com/jerrykuku/luci-app-vssr.git
           git clone https://github.com/kenzok8/small.git #依赖仓库
-
-          # sudo mkdir -p -m 777 /mnt/openwrt/bin /mnt/openwrt/build_dir/host /mnt/openwrt/build_dir/hostpkg /mnt/openwrt/dl /mnt/openwrt/feeds /mnt/openwrt/staging_dir
-          # ln -s /mnt/openwrt/bin ./bin
-          # mkdir -p ./build_dir/host && ln -s /mnt/openwrt/build_dir/host ./build_dir/host
-          # mkdir -p ./build_dir/host && ln -s /mnt/openwrt/build_dir/hostpkg ./build_dir/hostpkg
-          # ln -s /mnt/openwrt/dl ./dl
-          # ln -s /mnt/openwrt/feeds ./feeds
-          # ln -s /mnt/openwrt/staging_dir ./staging_dir
-
           df -h
 
       - name: Update feeds
         run: |
           ./scripts/feeds update -a
-          # rm -rf tmp && ./scripts/feeds install -f -p luci-app-vssr shadowsocksr-libev
           ./scripts/feeds install -a
           
 
@@ -157,7 +147,7 @@ jobs:
           CONFIG_PACKAGE_luci-app-vssr=y
           CONFIG_PACKAGE_luci-app-zerotier=y
           CONFIG_PACKAGE_luci-app-ipsec-vpnd=y
-          CONFIG_PACKAGE_luci-app-ssr-plus=y
+          # CONFIG_PACKAGE_luci-app-ssr-plus=y
           # CONFIG_PACKAGE_luci-app-adbyby-plus=y
           # CONFIG_PACKAGE_luci-app-aria2=y
           # CONFIG_PACKAGE_luci-app-baidupcs-web=y
