@@ -48,8 +48,7 @@ jobs:
           cd package
           mkdir openwrt-packages
           cd openwrt-packages
-          git clone https://github.com/rosywrt/luci-theme-rosy.git
-          # git clone https://github.com/maxlicheng/luci-app-ssr-plus.git
+          git clone https://github.com/maxlicheng/luci-app-ssr-plus.git
           git clone https://github.com/jerrykuku/lua-maxminddb.git  #git lua-maxminddb 依赖
           git clone https://github.com/jerrykuku/luci-app-vssr.git
           git clone https://github.com/kenzok8/small.git #依赖仓库
@@ -67,7 +66,7 @@ jobs:
       - name: Update feeds
         run: |
           ./scripts/feeds update -a
-          rm -rf tmp && ./scripts/feeds install -f -p luci-app-vssr shadowsocksr-libev
+          # rm -rf tmp && ./scripts/feeds install -f -p luci-app-vssr shadowsocksr-libev
           ./scripts/feeds install -a
           
 
@@ -156,8 +155,9 @@ jobs:
           # 常用LuCI插件选择:
           cat >> .config <<EOF
           CONFIG_PACKAGE_luci-app-vssr=y
-          CONFIG_PACKAGE_luci-app-zerotier=m
-          CONFIG_PACKAGE_luci-app-ipsec-vpnd=m
+          CONFIG_PACKAGE_luci-app-zerotier=y
+          CONFIG_PACKAGE_luci-app-ipsec-vpnd=y
+          CONFIG_PACKAGE_luci-app-ssr-plus=y
           # CONFIG_PACKAGE_luci-app-adbyby-plus=y
           # CONFIG_PACKAGE_luci-app-aria2=y
           # CONFIG_PACKAGE_luci-app-baidupcs-web=y
@@ -184,9 +184,8 @@ jobs:
 
           # LuCI主题:
           cat >> .config <<EOF
-          # CONFIG_PACKAGE_luci-theme-argon=y
+          CONFIG_PACKAGE_luci-theme-argon=y
           # CONFIG_PACKAGE_luci-theme-netgear=y
-          CONFIG_PACKAGE_luci-theme-rosy=y
           EOF
 
           # 常用软件包:
