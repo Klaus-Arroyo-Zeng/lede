@@ -10,13 +10,13 @@
 name: OpenWrt-x64
 
 on:
-  push:
-    branches: 
-      - master
+#   push:
+#     branches: 
+#       - master
   # schedule:
   #   - cron: 0 20 * * *
-  # release:
-  #   types: [published]
+  release:
+    types: [published]
 
 jobs:
 
@@ -46,12 +46,11 @@ jobs:
       - name: 自定义插件|主题。
         run: |
           cd package
-          mkdir openwrt-packages
-          cd openwrt-packages
+          cd lean
           # git clone https://github.com/fw876/helloworld.git
-          git clone https://github.com/jerrykuku/lua-maxminddb.git  #git lua-maxminddb 依赖
+          git clone https://github.com/jerrykuku/lua-maxminddb.git  
           git clone https://github.com/jerrykuku/luci-app-vssr.git
-          git clone https://github.com/kenzok8/small.git #依赖仓库
+          git clone https://github.com/kenzok8/small.git
           df -h
 
       - name: Update feeds
@@ -145,8 +144,8 @@ jobs:
           # 常用LuCI插件选择:
           cat >> .config <<EOF
           CONFIG_PACKAGE_luci-app-vssr=y
-          CONFIG_PACKAGE_luci-app-zerotier=y
-          CONFIG_PACKAGE_luci-app-ipsec-vpnd=y
+          CONFIG_PACKAGE_luci-app-zerotier=m
+          CONFIG_PACKAGE_luci-app-ipsec-vpnd=m
           # CONFIG_PACKAGE_luci-app-ssr-plus=y
           # CONFIG_PACKAGE_luci-app-adbyby-plus=y
           # CONFIG_PACKAGE_luci-app-aria2=y
