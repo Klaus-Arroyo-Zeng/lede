@@ -17,8 +17,8 @@ jobs:
         include:
           - name: JDcloud_AX1800PRO
             config: JDcloud_AX1800PRO.config
-          - name: N1
-            config: N1.config
+          # - name: N1
+          #   config: N1.config
 
     name: Build ${{ matrix.name }}
 
