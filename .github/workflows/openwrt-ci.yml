@@ -69,10 +69,7 @@ jobs:
 
       - name: Load custom feeds
         run: |
-          # [ -e $FEEDS_CONF ] && mv $FEEDS_CONF ./feeds.conf.default
-          [ -e $FEEDS_CONF ]
-          chmod +x $DIY_P1_SH
-          $GITHUB_WORKSPACE/$DIY_P1_SH
+          echo "src-git nikki https://github.com/nikkinikki-org/OpenWrt-nikki.git;main" >> "feeds.conf.default"
   
       - name: Update feeds
         run: ./scripts/feeds update -a
