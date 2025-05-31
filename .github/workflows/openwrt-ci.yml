@@ -10,7 +10,6 @@ on:
   # schedule:
   #   - cron: '0 20 * * *'
 env:
-  BUILD_DATE: ${{ steps.build_time.outputs.date }}
   CONFIG_FILE: .config
 
 permissions:
@@ -110,7 +109,7 @@ jobs:
           body: |
             自动构建设备：${{ matrix.name }}
             配置文件：${{ matrix.config }}
-            构建时间：${{ env.BUILD_DATE }}
+            构建时间：${{ steps.build_time.outputs.date }}
           files: output/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
