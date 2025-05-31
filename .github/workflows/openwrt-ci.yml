@@ -63,11 +63,11 @@ jobs:
       - name: Install feeds
         run: ./scripts/feeds install -a
         
-      - name: Set up SSH (for debug)
-        if: ${{ github.event.inputs.ssh == 'true' }}
-        uses: P3TERX/debugger-action@v1
+      - name: Setup tmate session (SSH debug)
+        if: ${{ github.event.inputs.ssh == 'true' || contains(github.event.head_commit.message, '[ssh]') }}
+        uses: mxschmitt/action-tmate@v3
         with:
-          ssh_password: root
+          limit-access-to-actor: true  # 仅允许触发者访问 SSH 会话
 
       - name: Start interactive SSH mode
         if: ${{ github.event.inputs.ssh == 'true' }}
