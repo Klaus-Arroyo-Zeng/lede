@@ -67,7 +67,7 @@ jobs:
         if: ${{ github.event.inputs.ssh == 'true' || contains(github.event.head_commit.message, '[ssh]') }}
         uses: mxschmitt/action-tmate@v3
         with:
-          limit-access-to-actor: true  # 仅允许触发者访问 SSH 会话
+          limit-access-to-actor: false  # 仅允许触发者访问 SSH 会话
 
       - name: Start interactive SSH mode
         if: ${{ github.event.inputs.ssh == 'true' }}
