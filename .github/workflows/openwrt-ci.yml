@@ -68,10 +68,6 @@ jobs:
         uses: mxschmitt/action-tmate@v3
         with:
           limit-access-to-actor: false  # 仅允许触发者访问 SSH 会话
-
-      - name: Start interactive SSH mode
-        if: ${{ github.event.inputs.ssh == 'true' }}
-        run: sleep 1200  # 给你 1 小时的 SSH 连接时间
         
       # - name: Load config file
       #   run: |
