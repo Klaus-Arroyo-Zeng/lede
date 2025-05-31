@@ -2,6 +2,11 @@ name: Build OpenWrt
 
 on:
   workflow_dispatch:
+    inputs:
+        ssh:
+          description: "Enable SSH debugging"
+          required: false
+          default: "false"
   # schedule:
   #   - cron: '0 20 * * *'
 
@@ -57,11 +62,21 @@ jobs:
   
       - name: Install feeds
         run: ./scripts/feeds install -a
-      
-      - name: Load config file
-        run: |
-          cp configs/${{ matrix.config }} .config
-          make defconfig
+        
+      - name: Set up SSH (for debug)
+        if: ${{ github.event.inputs.ssh == 'true' }}
+        uses: P3TERX/debugger-action@v1
+        with:
+          ssh_password: root
+
+      - name: Start interactive SSH mode
+        if: ${{ github.event.inputs.ssh == 'true' }}
+        run: sleep 1200  # 给你 1 小时的 SSH 连接时间
+        
+      # - name: Load config file
+      #   run: |
+      #     cp configs/${{ matrix.config }} .config
+      #     make defconfig
 
       - name: Download sources
         run: make download -j$(nproc)
